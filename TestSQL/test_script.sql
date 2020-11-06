@@ -37,22 +37,20 @@ INSERT INTO public.authors (first_name, last_name) values
 ('Уилки', 'Коллинз');
 
 
-INSERT INTO public.books_authors (author_id, book_id) values
-(1, 2),
+INSERT INTO public.books_authors (book_id, author_id) values
 (2, 1),
+(1, 2),
 (3, 3),
 (4, 4),
-(5, 7),
-(6, 5),
 (7, 5),
-(8, 6),
-(9, 8),
+(5, 6),
+(5, 7),
+(6, 8),
+(9, 9),
 (10, 10),
-(11, 9),
-(12, 13),
+(9, 11),
 (13, 12),
-(14, 11);
-
+(12, 13);
 
 
 

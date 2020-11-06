@@ -53,4 +53,9 @@ public class Books {
     @JsonView({BooksView.SinglePageBookView.class})
     private List<Authors> authors;
 
+
+    @OneToMany(mappedBy = "books", fetch = FetchType.EAGER)
+    @JsonView({BooksView.SinglePageBookView.class})
+    private List<Comments> commentsList;
+
 }

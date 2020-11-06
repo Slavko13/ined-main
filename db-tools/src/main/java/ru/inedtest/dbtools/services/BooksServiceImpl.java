@@ -38,7 +38,8 @@ public class BooksServiceImpl implements BooksService {
     @Override
     @Transactional
     public Books getBookByID(Long id) {
-        return booksRepo.findById(id).orElseThrow(()-> new NotFoundException("{BooksServiceImpl.findByID.NotFound}"));
+        Books books = booksRepo.findById(id).orElseThrow(()-> new NotFoundException("{BooksServiceImpl.findByID.NotFound}"));
+        return books;
     }
 
     @Override

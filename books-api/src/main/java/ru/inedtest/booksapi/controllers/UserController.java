@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.inedtest.dbtools.domains.books.Comments;
+import ru.inedtest.dbtools.dto.othersDTO.CommentDTO;
 import ru.inedtest.dbtools.dto.othersDTO.RegistrationDTO;
+import ru.inedtest.dbtools.services.CommentService;
 import ru.inedtest.oauthservice.services.RegistrationService;
 
 @RestController
@@ -13,11 +16,12 @@ import ru.inedtest.oauthservice.services.RegistrationService;
 public class UserController {
 
     private final RegistrationService registrationService;
-
+    private final CommentService commentService;
 
     @Autowired
-    public UserController(RegistrationService registrationService) {
+    public UserController(RegistrationService registrationService, CommentService commentService) {
         this.registrationService = registrationService;
+        this.commentService = commentService;
     }
 
 
@@ -25,6 +29,19 @@ public class UserController {
     @CrossOrigin
     public ResponseEntity registrateUser(@RequestBody RegistrationDTO registrationDTO) {
         registrationService.registration(registrationDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/newComment")
+    @CrossOrigin
+    public ResponseEntity<Comments> addedComment(@RequestBody CommentDTO commentDTO) {
+        return new ResponseEntity<>(commentService.addComment(commentDTO),HttpStatus.OK);
+    }
+
+    @PostMapping("/deleteComment")
+    @CrossOrigin
+    public ResponseEntity deleteComment(@RequestBody CommentDTO commentDTO) {
+        commentService.deleteComment(commentDTO.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
