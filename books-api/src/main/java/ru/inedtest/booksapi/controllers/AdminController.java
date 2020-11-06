@@ -1,6 +1,7 @@
 package ru.inedtest.booksapi.controllers;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import ru.inedtest.dbtools.domains.books.Books;
 import ru.inedtest.dbtools.dto.adminDTO.AuthorDTO;
 import ru.inedtest.dbtools.dto.adminDTO.BookDTO;
 import ru.inedtest.dbtools.dto.adminDTO.BookStyleDTO;
+import ru.inedtest.dbtools.json.views.BooksView;
 import ru.inedtest.dbtools.services.AuthorsService;
 import ru.inedtest.dbtools.services.BookStyleService;
 import ru.inedtest.dbtools.services.BooksService;
@@ -36,18 +38,21 @@ public class AdminController {
    //Book CRUD
     @PostMapping("/addBook")
     @CrossOrigin
+    @JsonView({BooksView.FullView.class})
     public ResponseEntity<Books> addBook(@RequestBody BookDTO bookDTO) {
         return new ResponseEntity<>(booksService.addBook(bookDTO), HttpStatus.OK);
     }
 
    @PostMapping("/getAllBooks")
    @CrossOrigin
+   @JsonView({BooksView.FullView.class})
    public ResponseEntity<List<Books>> getAllBooks() {
            return new ResponseEntity<>(booksService.getAllBooks(), HttpStatus.OK);
    }
 
     @PostMapping("/updateBook")
     @CrossOrigin
+    @JsonView({BooksView.FullView.class})
     public ResponseEntity<Books> updateBook(@RequestBody BookDTO bookDTO) {
         return new ResponseEntity<>(booksService.updateBook(bookDTO), HttpStatus.OK);
     }
