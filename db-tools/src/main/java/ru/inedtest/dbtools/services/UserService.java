@@ -10,7 +10,6 @@ public interface UserService {
     AppUser findByEmail(String email);
     boolean existsByEmail(String email);
     AppUser findUserById(UUID userId);
-    void deleteUserByEmail(String email);
 
 
 

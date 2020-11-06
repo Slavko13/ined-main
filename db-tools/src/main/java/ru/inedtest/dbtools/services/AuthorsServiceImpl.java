@@ -3,6 +3,7 @@ package ru.inedtest.dbtools.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.inedtest.base.exceptions.NotFoundException;
 import ru.inedtest.dbtools.domains.books.Authors;
 import ru.inedtest.dbtools.domains.books.Books;
 import ru.inedtest.dbtools.dto.adminDTO.AuthorDTO;
@@ -36,7 +37,10 @@ public class AuthorsServiceImpl implements AuthorsService {
     @Override
     @Transactional
     public Authors updateAuthors(AuthorDTO authorDTO) {
-        return null;
+        Authors authorsFromDB = authorsRepo.findById(authorDTO.getId()).orElseThrow(() -> new NotFoundException("{AuthorsService.UpdateAuthor.NotFound}"));
+        authorsFromDB.setFirstName(authorDTO.getFirstName());
+        authorsFromDB.setLastName(authorDTO.getLastName());
+        return authorsRepo.save(authorsFromDB);
     }
 
     @Override

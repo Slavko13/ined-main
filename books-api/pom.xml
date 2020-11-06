@@ -25,11 +25,6 @@
 
 		<dependency>
 			<groupId>ru.inedtest</groupId>
-			<artifactId>oauth-service</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>ru.inedtest</groupId>
 			<artifactId>database</artifactId>
 		</dependency>
 

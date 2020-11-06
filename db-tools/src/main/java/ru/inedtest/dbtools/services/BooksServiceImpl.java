@@ -64,14 +64,20 @@ public class BooksServiceImpl implements BooksService {
     @Override
     @Transactional
     public List<Books> getAllByBookStyle(Long id) {
-        BookStyle bookStyle = booksStyleRepo.findById(id).get();
+        BookStyle bookStyle = booksStyleRepo.findById(id).orElseThrow(() -> new NotFoundException("{BookService.UpdateBook.NotFound}"));;
         return bookStyle.getBooks();
     }
 
     @Override
     @Transactional
-    public Books updateBook(BookStyleDTO bookStyleDTO) {
-        return null;
+    public Books updateBook(BookDTO bookDTO) {
+        Books booksFromDB = booksRepo.findById(bookDTO.getId()).get();
+        booksFromDB.setAuthors(bookDTO.getAuthors());
+        booksFromDB.setBookStyle(bookDTO.getBookStyle());
+        booksFromDB.setDescription(bookDTO.getDescription());
+        booksFromDB.setName(bookDTO.getName());
+        return booksRepo.save(booksFromDB);
+
     }
 
 }

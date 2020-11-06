@@ -41,4 +41,10 @@ public class AppUser {
     @JsonManagedReference
     private List<Comments> commentsList;
 
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
+
+
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BookStyleService {
 
-    void addStyle(BookStyleDTO bookStyleDTO);
+    BookStyle addStyle(BookStyleDTO bookStyleDTO);
     void deleteStyle(Long id);
     BookStyle updateBookStyle(BookStyleDTO bookStyleDTO);
     List<BookStyle> getAllBooksStyle();

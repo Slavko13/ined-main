@@ -13,6 +13,6 @@ public interface BooksService {
     void deleteBookByID(Long id);
     Books addBook(BookDTO bookDTO);
     List<Books> getAllByBookStyle(Long id);
-    Books updateBook(BookStyleDTO bookStyleDTO);
+    Books updateBook(BookDTO bookDTO);
 
 }
