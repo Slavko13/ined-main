@@ -20,7 +20,7 @@
         <li>Maven</li>
         <li>PostgreSQL</li>
     </ul>
-   <li><b>Backend:</b></li>
+   <li><b>Frontend:</b></li>
      <ul>
          <li>Vue.js</li>
          <li>CSS</li>
