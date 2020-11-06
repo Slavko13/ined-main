@@ -20,13 +20,14 @@
         <li>Maven</li>
         <li>PostgreSQL</li>
     </ul>
+   <li><b>Backend:</b></li>
+     <ul>
+         <li>Vue.js</li>
+         <li>CSS</li>
+     </ul>
     
-    <li><b>Frontend:</b></li>
-    <ul>
-        <li>Vue.js</li>
-        <li>CSS</li>
-    </ul>
- </ul>
+  </ul>
+ 
  <h3> Архитектура</h3>
   <p>Здесь представлены и кратко описаны модули приложения.</p>
   <h2>Основные модули</h2>
