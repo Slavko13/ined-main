@@ -1,9 +1,7 @@
 package ru.inedtest.dbtools.domains.books;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Comments {
 
     @Id
@@ -29,7 +28,6 @@ public class Comments {
 
     @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
     @JsonView(CommentViews.MainCommentsView.class)
     private AppUser appUser;
 

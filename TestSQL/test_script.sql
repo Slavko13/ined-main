@@ -53,6 +53,15 @@ INSERT INTO public.books_authors (book_id, author_id) values
 (12, 13);
 
 
+INSERT INTO public.roles ("name") values
+('ROLE_ADMIN'),
+('ROLE_USER'),
+('ROLE_GUEST');
+
+INSERT INTO public."comments" (commenttext, user_id, book_id) VALUES('ha what a loh', '61f8706a-9055-457f-9719-9c9ccd1d22f6', 1);
+INSERT INTO public."comments" (commenttext, user_id, book_id) VALUES('ha what a loh -2', '61f8706a-9055-457f-9719-9c9ccd1d22f6', 1);
+
+
 
 
 

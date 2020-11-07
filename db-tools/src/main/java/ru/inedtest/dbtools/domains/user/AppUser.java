@@ -53,5 +53,8 @@ public class AppUser {
     @Column(name = "status")
     private Status status;
 
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
+    @JoinColumn(name="role_id")
+    private Role role;
 
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.inedtest.booksapi.dto.FindByIdDTO;
+import ru.inedtest.dbtools.dto.othersDTO.FindByIdDTO;
 import ru.inedtest.dbtools.domains.books.Books;
 import ru.inedtest.dbtools.json.views.BooksView;
 import ru.inedtest.dbtools.services.BooksService;

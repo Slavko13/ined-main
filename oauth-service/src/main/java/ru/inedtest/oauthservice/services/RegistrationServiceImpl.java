@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.inedtest.base.exceptions.BadRequestException;
 import ru.inedtest.base.exceptions.InternalServerException;
 import ru.inedtest.dbtools.domains.user.AppUser;
+import ru.inedtest.dbtools.domains.user.Role;
 import ru.inedtest.dbtools.domains.user.Status;
 import ru.inedtest.dbtools.dto.othersDTO.RegistrationDTO;
 import ru.inedtest.dbtools.services.UserService;
@@ -42,7 +43,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                     .email(registrationDTO.getEmail())
                     .password(passwordEncoder.encode(registrationDTO.getPassword()))
                     .status(Status.ACTIVE)
-                    //.role(new Role("ROLE_GUEST"))
+                    .role(new Role("ROLE_GUEST"))
                     .build();
             userService.saveUser(appUser);
         }

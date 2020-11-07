@@ -32,13 +32,13 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/newComment")
+    @PostMapping("comment/newComment")
     @CrossOrigin
     public ResponseEntity<Comments> addedComment(@RequestBody CommentDTO commentDTO) {
         return new ResponseEntity<>(commentService.addComment(commentDTO),HttpStatus.OK);
     }
 
-    @PostMapping("/deleteComment")
+    @PostMapping("comment/deleteComment")
     @CrossOrigin
     public ResponseEntity deleteComment(@RequestBody CommentDTO commentDTO) {
         commentService.deleteComment(commentDTO.getId());
