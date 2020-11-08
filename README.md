@@ -1,4 +1,4 @@
-<h1> Ined test project (Spring boot(Java 11) + Vue Js + PostgreSQL)</h1>
+<h1> Ined test project (Spring boot(Java 11) + PostgreSQL)</h1>
 
  <ul>
     <li> Инструкция по развертыванию и использованию находится в папке TestSQL </li>
@@ -20,12 +20,6 @@
         <li>Maven</li>
         <li>PostgreSQL</li>
     </ul>
-   <li><b>Frontend:</b></li>
-     <ul>
-         <li>Vue.js</li>
-         <li>CSS</li>
-     </ul>
-    
   </ul>
  
  <h3> Архитектура</h3>
