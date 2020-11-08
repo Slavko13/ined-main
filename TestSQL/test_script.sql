@@ -58,8 +58,17 @@ INSERT INTO public.roles ("name") values
 ('ROLE_USER'),
 ('ROLE_GUEST');
 
-INSERT INTO public."comments" (commenttext, user_id, book_id) VALUES('ha what a loh', '61f8706a-9055-457f-9719-9c9ccd1d22f6', 1);
-INSERT INTO public."comments" (commenttext, user_id, book_id) VALUES('ha what a loh -2', '61f8706a-9055-457f-9719-9c9ccd1d22f6', 1);
+INSERT INTO public.appuser (id, email, first_name, last_name, "password", status, role_id)values
+('23a727ef-d517-4769-af46-a655f057816b', 'firepoint.pro@gmail.com', 'Petrenko', 'Viacheslav', '13', 'ACTIVE', 1);
+('0eb3fb83-f121-418f-8aae-d5104b477966', 'RM.Strukov@Ined.ru', 'user', 'user', '13', 'ACTIVE', 2);
+
+INSERT INTO public."comments" (commenttext, user_id, book_id) values
+('Не зна, не читал', '0eb3fb83-f121-418f-8aae-d5104b477966', 1),
+('Купил, начну читать', '0eb3fb83-f121-418f-8aae-d5104b477966', 1),
+('Прочитал, спасибо', '0eb3fb83-f121-418f-8aae-d5104b477966', 1),
+
+
+
 
 
 
