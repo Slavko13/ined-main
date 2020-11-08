@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import ru.inedtest.dbtools.json.views.AuthorsView;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ import java.util.Set;
 @Table(name = "roles")
 @AllArgsConstructor
 @NoArgsConstructor
+@DynamicUpdate
 public class Role {
 
     public Role(String name) {

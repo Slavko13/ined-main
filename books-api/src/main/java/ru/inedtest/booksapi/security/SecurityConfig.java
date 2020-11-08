@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
 
     private static final String ADMIN_ENDPOINT = "/admin/api/**";
-    private static final String LOGIN_ENDPOINT = "/api/v1/auth/login";
+    private static final String LOGIN_ENDPOINT = "/api/auth/login";
 
     public SecurityConfig(BCryptPasswordEncoder passwordEncoder, JwtTokenFilter jwtTokenFilter, UserDetailsService userDetailsService) {
         this.passwordEncoder = passwordEncoder;
@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/user/api/newUser").permitAll()
-                .antMatchers(HttpMethod.GET, "/user/api/comments/**").hasRole("USER")
+                .antMatchers(HttpMethod.GET, "/user/api/comments/**").hasAnyRole("ADMIN", "USER")
                 .antMatchers(HttpMethod.POST, ADMIN_ENDPOINT).hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, ADMIN_ENDPOINT).hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/main/api/**").permitAll()

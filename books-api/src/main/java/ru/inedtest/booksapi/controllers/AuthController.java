@@ -12,7 +12,7 @@ import ru.inedtest.oauthservice.services.AuthService;
 
 
 @RestController
-@RequestMapping("/api/v1/auth/login")
+@RequestMapping("/api/auth/login")
 public class AuthController {
 
     private final AuthService  authService;
@@ -20,7 +20,6 @@ public class AuthController {
     public AuthController(AuthService authService) {
         this.authService = authService;
     }
-
 
     @PostMapping
     public ResponseEntity<JwtAuthenticationResponse>  signIn(@RequestBody AuthenticationRequestDto loginDTO) {

@@ -13,6 +13,7 @@ public class RegistrationDTO {
     private String lastName;
     private String password;
     private String email;
+    private Long roleID;
 
 
 }

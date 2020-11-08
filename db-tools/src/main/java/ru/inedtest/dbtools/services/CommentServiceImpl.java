@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comments addComment(CommentDTO commentDTO) {
-        AppUser userAddedThisComment = userService.findByEmail(commentDTO.getUserName());
+        AppUser userAddedThisComment = userService.findByEmail(commentDTO.getEmail());
         Books bookWithThisComment = booksService.getBookByID(commentDTO.getBookID());
 
         Comments comment = Comments.builder()

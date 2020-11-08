@@ -5,10 +5,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.inedtest.base.exceptions.BadRequestException;
 import ru.inedtest.base.exceptions.InternalServerException;
+import ru.inedtest.base.exceptions.NotFoundException;
 import ru.inedtest.dbtools.domains.user.AppUser;
 import ru.inedtest.dbtools.domains.user.Role;
 import ru.inedtest.dbtools.domains.user.Status;
 import ru.inedtest.dbtools.dto.othersDTO.RegistrationDTO;
+import ru.inedtest.dbtools.repositories.RoleRepo;
 import ru.inedtest.dbtools.services.UserService;
 
 import java.util.Map;
@@ -20,12 +22,13 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     private final UserService userService;
     private final BCryptPasswordEncoder passwordEncoder;
-
+    private final RoleRepo roleRepo;
 
     @Autowired
-    public RegistrationServiceImpl(UserService userService, BCryptPasswordEncoder passwordEncoder) {
+    public RegistrationServiceImpl(UserService userService, BCryptPasswordEncoder passwordEncoder, RoleRepo roleRepo) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.roleRepo = roleRepo;
     }
 
     @Override
@@ -43,7 +46,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                     .email(registrationDTO.getEmail())
                     .password(passwordEncoder.encode(registrationDTO.getPassword()))
                     .status(Status.ACTIVE)
-                    .role(new Role("ROLE_GUEST"))
+                    .role(getRoleFromDB(registrationDTO.getRoleID()))
                     .build();
             userService.saveUser(appUser);
         }
@@ -52,6 +55,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
 
 
+    }
+
+    private Role getRoleFromDB(Long id) {
+        return roleRepo.findById(id).orElseThrow(() -> new NotFoundException("{RegistrationServiceImpl.getRoleFromDB.NotFound}"));
     }
 
 

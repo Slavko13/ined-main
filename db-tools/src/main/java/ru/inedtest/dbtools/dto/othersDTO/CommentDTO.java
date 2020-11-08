@@ -12,7 +12,7 @@ public class CommentDTO {
 
     private Long id;
     private String commentText;
-    private String userName;
+    private String email;
     private Long bookID;
 
 }
